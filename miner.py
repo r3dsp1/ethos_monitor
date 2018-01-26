@@ -152,7 +152,7 @@ while 1:
   if (int(numRunningGpus) != int(numGpus)):                                                                                                    
       # reboot                                                                                                                                 
       DumpActivity("One or more GPU(s) might have crashed")                                                                                    
-      DumpActivity("Rebooting (" + str(hashRate) + ")")                                                                                        
+      DumpActivity("Rebooting ")                                                                                        
       os.system("sudo hard-reboot")                                                                                                            
   else:                                                                                                                                        
     # reset reboot pending counter                                                                                                             
