@@ -2,13 +2,11 @@
 
 
 # -*- Python -*-                                                                                                                               
-
-#*****************************************************************                                                                             
+#                                                                   
 #                                                                                                                                              
 #                                                                                                                                              
-# WARRANTY:                                                                                                                                    
-# Use all material in this file at your own risk. Hiranmoy Basak                                                                               
-# makes no claims about any material contained in this file.                                                                                   
+# Warning:                                                                                                                                    
+# Use all material in this file at your own risk.                                                                                
 #                                                                                                                                              
 
 
@@ -145,7 +143,7 @@ while 1:
     DumpActivity("<" + status + "> Gpus: " + str(numRunningGpus) + "/" + str(numGpus) + " - " + str(hashRate))                                 
 
   if (status == "unreachable"):                                                                                                                
-    gGpuNotHashing = 0                                                                                                                         
+    gGpuNotHashing = 1                                                                                                                         
     DumpActivity("[Warning] panel is not updating")                                                                                            
     continue;                                                                                                                                  
 
