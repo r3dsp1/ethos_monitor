@@ -29,7 +29,8 @@ gRigName = "-"
 gJsonSite = "-"                                                                                                                                
 gDebugMode = 0                                                                                                                                 
 gGpuNotHashing = 0                                                                                                                             
-gLogFile = "/home/ethos/gpu_crash.log"                                                                                                         
+gLogFile = "/home/ethos/gpu_crash.log"
+hostname = "8.8.8.8"
                                                                                                                                                
                                                                                                                                                
                                                                                                                                                
@@ -158,3 +159,13 @@ while 1:
     # reset reboot pending counter                                                                                                             
     DumpActivity(" GPU(s) is working fine! " + str(hashRate) + " H/s")                                                                         
     gGpuNotHashing = 0
+    
+  # check for connection
+  response = os.system("ping -c 1 " + hostname)
+    if response == 0:
+       DumpActivity("Ping 8.8.8.8 successfully ! Network Active")
+    else:
+       DumpActivity("Ping 8.8.8.8 unsuccessfully ! Network Error")
+       DumpActivity("Rebooting ")    
+       os.system("sudo hard-reboot")                                                                                                            
+
