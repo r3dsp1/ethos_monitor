@@ -64,12 +64,7 @@ def ProcessArguments(gotPanelInfo):
     if (argIdx >= len(sys.argv)):                                                                                                              
       break                                                                                                                                    
 
-    arg = sys.argv[argIdx]                                                                                                                     
-
-    if (str(arg) == "-debug"):                                                                                                                 
-      gDebugMode = 1                                                                                                                           
-      DumpActivity("debug mode")                                                                                                               
-      continue                                                                                                                                 
+    arg = sys.argv[argIdx]                                                                                                                                                                                                                                                   
 
     if (gotPanelInfo == 1):                                                                                                                    
       DumpActivity("Arguments : " + str(arg))                                                                                                  
@@ -112,21 +107,29 @@ DumpActivity("Monitor Started!")
 
 while 1:                                                                                                                                       
   # wait for 5 min                                                                                                                             
-  time.sleep(300)                                                                                                                              
+  time.sleep(300)         
+  
+  # check for connection                                                                                                                       
+  if (response == 0):                                                                                                                          
+       DumpActivity("Ping 8.8.8.8 successfully ! Network Active")                                                                              
+  else:                                                                                                                                        
+       DumpActivity("Ping 8.8.8.8 unsuccessfully ! Network Error")                                                                             
+       DumpActivity("Rebooting ")                                                                                                              
+       os.system("sudo hard-reboot")   
 
   # read site content                                                                                                                          
   try:                                                                                                                                         
     url = urlopen(gJsonSite).read()                                                                                                            
   except:                                                                                                                                      
     DumpActivity("invalid url")                                                                                                                
-    continue                                                                                                                                   
+                                                                                                                                   
 
   # convert site content to json                                                                                                               
   try:                                                                                                                                         
     result = json.loads(url)                                                                                                                   
   except:                                                                                                                                      
     DumpActivity("invalid json")                                                                                                               
-    continue                                                                                                                                   
+                                                                                                                                  
 
   # extract data                                                                                                                               
   try:                                                                                                                                         
@@ -137,16 +140,11 @@ while 1:
     response = os.system("ping -c 1 " + hostname)                                                                                              
   except:                                                                                                                                      
     DumpActivity("invalid rig name")                                                                                                           
-    continue                                                                                                                                   
-
-  if (str(gDebugMode) == "1"):                                                                                                                 
-    DumpActivity("<" + status + "> Gpus: " + str(numRunningGpus) + "/" + str(numGpus) + " - " + str(hashRate))                                 
+                                                                                                                                                              
 
   if (status == "unreachable"):                                                                                                                
-    gGpuNotHashing = 1                                                                                                                         
-    DumpActivity("[Warning] panel is not updating")                                                                                            
-    continue;                                                                                                                                  
-
+    DumpActivity("[Warning] panel is unreachable")                                                                                            
+                                                                                                                                 
   # check if any gpu is down                                                                                                                   
   if (int(numRunningGpus) != int(numGpus)):                                                                                                    
       # reboot                                                                                                                                 
@@ -158,10 +156,3 @@ while 1:
     DumpActivity("GPU(s) is working fine! " + str(hashRate) + " H/s")                                                                          
     gGpuNotHashing = 0                                                                                                                         
 
-  # check for connection                                                                                                                       
-  if (response == 0):                                                                                                                          
-       DumpActivity("Ping 8.8.8.8 successfully ! Network Active")                                                                              
-  else:                                                                                                                                        
-       DumpActivity("Ping 8.8.8.8 unsuccessfully ! Network Error")                                                                             
-       DumpActivity("Rebooting ")                                                                                                              
-       os.system("sudo hard-reboot")   
