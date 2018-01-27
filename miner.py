@@ -109,7 +109,8 @@ while 1:
   # wait for 5 min                                                                                                                             
   time.sleep(300)         
   
-  # check for connection                                                                                                                       
+  # check for connection  
+  response = os.system("ping -c 1 " + hostname)                                                                                              
   if (response == 0):                                                                                                                          
        DumpActivity("Ping 8.8.8.8 successfully ! Network Active")                                                                              
   else:                                                                                                                                        
@@ -137,7 +138,6 @@ while 1:
     numRunningGpus = result["rigs"][gRigName]["miner_instance"]                                                                                
     hashRate =  result["rigs"][gRigName]["miner_hashes"]                                                                                       
     status = result["rigs"][gRigName]["condition"]                                                                                             
-    response = os.system("ping -c 1 " + hostname)                                                                                              
   except:                                                                                                                                      
     DumpActivity("invalid rig name")                                                                                                           
                                                                                                                                                               
