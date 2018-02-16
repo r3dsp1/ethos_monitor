@@ -148,7 +148,8 @@ while 1:
   # check if any gpu is down                                                                                                                   
   if (int(numRunningGpus) != int(numGpus)):                                                                                                    
       # reboot                                                                                                                                 
-      DumpActivity("One or more GPU(s) might have crashed")                                                                                    
+      DumpActivity("One or more GPU(s) might have crashed")
+      DumpActivity("GPU(s) status " + str(hashRate) + " H/s")
       DumpActivity("Rebooting ")                                                                                                               
       os.system("sudo hard-reboot")                                                                                                            
   else:                                                                                                                                        
