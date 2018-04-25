@@ -108,8 +108,7 @@ while 1:
   if (response == 0):                                                                                                                          
        DumpActivity("Ping 8.8.8.8 successfully ! Network Active")                                                                              
   else:                                                                                                                                        
-       DumpActivity("Ping 8.8.8.8 unsuccessfully ! Network Error")                                                                             
-       DumpActivity("Rebooting ")                                                                                                              
+       DumpActivity("Ping 8.8.8.8 unsuccessfully ! Network Error ! Rebooting...")                                                                             
        os.system("sudo hard-reboot")   
 
   # read site content                                                                                                                          
