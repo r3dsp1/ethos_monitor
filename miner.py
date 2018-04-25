@@ -1,13 +1,7 @@
 #!/usr/bin/python                                                                                                                              
 
 
-# -*- Python -*-                                                                                                                               
-#                                                                   
-#                                                                                                                                              
-#                                                                                                                                              
-# Warning:                                                                                                                                    
-# Use all material in this file at your own risk.                                                                                
-#                                                                                                                                              
+# By Keith.K                                                                                                                                       
 
 
 
@@ -139,7 +133,9 @@ while 1:
     hashRate =  result["rigs"][gRigName]["miner_hashes"]                                                                                       
     status = result["rigs"][gRigName]["condition"]                                                                                             
   except:                                                                                                                                      
-    DumpActivity("invalid rig name")                                                                                                           
+    DumpActivity("invalid rig name")
+    DumpActivity("API access unsuccessfully! Rebooting...")
+    os.system("sudo reboot")
                                                                                                                                                               
 
   if (status == "unreachable"):                                                                                                                
@@ -150,10 +146,10 @@ while 1:
       # reboot                                                                                                                                 
       DumpActivity("One or more GPU(s) might have crashed")
       DumpActivity("GPU(s) status " + str(hashRate) + " H/s")
-      DumpActivity("Rebooting ")                                                                                                               
-      os.system("sudo hard-reboot")                                                                                                            
+      DumpActivity("Rebooting...")                                                                                                               
+      os.system("sudo reboot")                                                                                                            
   else:                                                                                                                                        
     # reset reboot pending counter                                                                                                             
-    DumpActivity("GPU(s) is working fine! " + str(hashRate) + " H/s")                                                                          
+    DumpActivity("All GPU(s) is mining ! ")                                                                          
     gGpuNotHashing = 0                                                                                                                         
 
