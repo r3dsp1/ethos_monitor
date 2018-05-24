@@ -133,8 +133,8 @@ while 1:
     status = result["rigs"][gRigName]["condition"]                                                                                             
   except:                                                                                                                                      
     DumpActivity("invalid rig name")
-    DumpActivity("API access unsuccessfully! Rebooting...")
-    os.system("sudo reboot")
+    DumpActivity("API access unsuccessfully! Stall!")
+    
                                                                                                                                                               
 
   if (status == "unreachable"):                                                                                                                
