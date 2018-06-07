@@ -50,7 +50,9 @@ def GetRigInfo():
 # ===================================   run  ================================                                                                  
                                                                                                                      
 DumpActivity("Rig Name: " + gRigName + ", Json: " + gJsonSite)                                                                                 
-DumpActivity("Monitor Started!")                                                                                                               
+DumpActivity("Monitor Started!")
+
+GetRigInfo()
 
 while 1:                                                                                                                                       
   # wait for 5 min                                                                                                                             
