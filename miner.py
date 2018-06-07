@@ -48,8 +48,7 @@ def GetRigInfo():
   crashed_Status = miner_Hashes.find("00.00")
 
 # ===================================   run  ================================                                                                  
-                                                                                                                     
-DumpActivity("Rig Name: " + gRigName + ", Json: " + gJsonSite)                                                                                 
+                                                                                                                                                                                                      
 DumpActivity("Monitor Started!")
 
 GetRigInfo()
