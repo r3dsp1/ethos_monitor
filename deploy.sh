@@ -16,4 +16,6 @@ echo "1" > /opt/ethos/etc/autorebooted.file
 
 sudo timedatectl set-timezone Asia/Hong_Kong
 
+rm gpu_crash.log
+
 sudo reboot
