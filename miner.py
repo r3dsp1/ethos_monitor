@@ -74,6 +74,6 @@ while 1:
       os.system("sudo reboot")                                                                                                            
   else:                                                                                                                                        
     # reset reboot pending counter                                                                                                             
-    # DumpActivity("All GPU(s) is mining ! ")                                                                          
+    DumpActivity("All GPU(s) is mining ! ")                                                                          
                                                                                                                            
 
