@@ -60,7 +60,7 @@ while 1:
   # check for connection  
   response = os.system("ping -c 1 " + hostname)                                                                                              
   if (response == 0):                                                                                                                          
-       # DumpActivity("Ping 8.8.8.8 successfully ! Network Active")                                                                              
+       DumpActivity("Ping 8.8.8.8 successfully ! Network Active")                                                                              
   else:                                                                                                                                        
        DumpActivity("Ping 8.8.8.8 unsuccessfully ! Network Error ! Rebooting...")                                                                             
        os.system("sudo reboot")   
