@@ -60,9 +60,10 @@ while 1:
   # check for connection  
   response = os.system("ping -c 1 " + hostname)                                                                                              
   if (response == 0):                                                                                                                          
-       DumpActivity("Ping 8.8.8.8 successfully ! Network Active")                                                                              
+       print ("Ping 8.8.8.8 successfully ! Network Active")                                                                              
   else:                                                                                                                                        
-       DumpActivity("Ping 8.8.8.8 unsuccessfully ! Network Error ! Rebooting...")                                                                             
+       DumpActivity("Ping 8.8.8.8 unsuccessfully ! Network Error ! Rebooting...")
+       print ("Network Error ! Rebooting...")
        os.system("sudo reboot")   
                                                                                                                            
   # check if any gpu is down                                                                                                                   
@@ -70,10 +71,10 @@ while 1:
       # reboot                                                                                                                                 
       DumpActivity("One or more GPU(s) might have crashed")
       DumpActivity(miner_Hashes)
-      DumpActivity("Rebooting...")                                                                                                               
+      DumpActivity("Rebooting...")
       os.system("sudo reboot")                                                                                                            
   else:                                                                                                                                        
     # reset reboot pending counter                                                                                                             
-    DumpActivity("All GPU(s) is mining ! ")                                                                          
+    print ("All GPU(s) is mining ! ")                                                                          
                                                                                                                            
 
