@@ -44,7 +44,7 @@ def DumpActivity(dumpStr):
 def GetRigInfo():                                                                                                                            
   global miner_Hashes, crashed_Status                                                                                                                   
 
-  miner_Hashes = commands.getoutput("cat /var/run/ethos/stats.file | grep 'miner_hash' ")   
+  miner_Hashes = commands.getoutput("update | grep 'miner_hash' ")   
   crashed_Status = miner_Hashes.find("00.00")
 
 # ===================================   run  ================================                                                                  
