@@ -51,8 +51,6 @@ def GetRigInfo():
                                                                                                                                                                                                       
 DumpActivity("Monitor Started!")
 
-GetRigInfo()
-
 while 1:                                                                                                                                       
   # wait for 5 min                                                                                                                             
   time.sleep(300)         
@@ -66,7 +64,9 @@ while 1:
        print ("Network Error ! Rebooting...")
        os.system("sudo reboot")   
                                                                                                                            
-  # check if any gpu is down                                                                                                                   
+  # check if any gpu is down
+  GetRigInfo()
+  
   if (crashed_Status != -1):                                                                                                    
       # reboot                                                                                                                                 
       DumpActivity("One or more GPU(s) might have crashed")
