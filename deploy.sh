@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo update-miner claymore-xmr
+
 cd
 
 rm -f -R ethos_monitor
