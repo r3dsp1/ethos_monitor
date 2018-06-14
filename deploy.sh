@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo update-miner claymore-xmr
 
 cd
 
