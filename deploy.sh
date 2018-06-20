@@ -20,6 +20,14 @@ echo "1" > /opt/ethos/etc/autorebooted.file
 
 sudo timedatectl set-timezone Asia/Hong_Kong
 
+echo "@reboot sh /home/ethos/ethos_monitor/check.sh" > cron
+
+crontab cron
+
+crontab -l
+
+rm cron
+
 rm gpu_crash.log
 
 sudo reboot
