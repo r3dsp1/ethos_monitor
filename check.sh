@@ -11,7 +11,7 @@ then
         echo "monitor is running"
 
 else
-        echo "Second called!" >> /home/ethos/gpu_crash.log
+        echo "Monitor isn't called!" >> /home/ethos/gpu_crash.log
         python /home/ethos/ethos_monitor/miner.py
 
 fi
