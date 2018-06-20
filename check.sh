@@ -12,6 +12,6 @@ then
 
 else
         echo "Second called!" >> /home/ethos/gpu_crash.log
-        sh /home/ethos/custom.sh
+        python /home/ethos/ethos_monitor/miner.py
 
 fi
