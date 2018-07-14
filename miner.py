@@ -44,8 +44,10 @@ def DumpActivity(dumpStr):
 def GetRigInfo():                                                                                                                            
   global miner_Hashes, crashed_Status                                                                                                                   
 
-  miner_Hashes = commands.getoutput("update | grep 'miner_hash' ")   
+  miner_Hashes = commands.getoutput("update | grep 'miner_hash' ")
+  miner_Status = commands.getoutput("update | grep 'status' ")
   crashed_Status = miner_Hashes.find("00.00")
+  crashed_Problem = miner_Status.find("problem")
 
 # ===================================   run  ================================                                                                  
                                                                                                                                                                                                       
@@ -67,7 +69,7 @@ while 1:
   # check if any gpu is down
   GetRigInfo()
   
-  if (crashed_Status != -1):                                                                                                    
+  if (crashed_Status != -1) or (crashed_Problem != -1) :                                                                                                    
       # reboot                                                                                                                                 
       DumpActivity("One or more GPU(s) might have crashed")
       DumpActivity(miner_Hashes)
