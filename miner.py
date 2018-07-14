@@ -42,7 +42,7 @@ def DumpActivity(dumpStr):
 # ============================== get rig info ============================                                                                
                                                                                                                  
 def GetRigInfo():                                                                                                                            
-  global miner_Hashes, crashed_Status                                                                                                                   
+  global miner_Hashes, crashed_Status, miner_Status, crashed_Problem                                                                                                                   
 
   miner_Hashes = commands.getoutput("update | grep 'miner_hash' ")
   miner_Status = commands.getoutput("update | grep 'status' ")
