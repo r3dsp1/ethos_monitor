@@ -44,8 +44,8 @@ def DumpActivity(dumpStr):
 def GetRigInfo():                                                                                                                            
   global miner_Hashes, crashed_Status, miner_Status, crashed_Problem                                                                                                                   
 
-  miner_Hashes = commands.getoutput("update | grep 'miner_hash' ")
-  miner_Status = commands.getoutput("update | grep 'status' ")
+  miner_Hashes = commands.getoutput("stats | grep 'miner_hash' ")
+  miner_Status = commands.getoutput("stats | grep 'status' ")
   crashed_Status = miner_Hashes.find("00.00")
   crashed_Problem = miner_Status.find("problem")
 
