@@ -42,7 +42,7 @@ def DumpActivity(dumpStr):
 # ============================== get rig info ============================                                                                
                                                                                                                  
 def GetRigInfo():                                                                                                                            
-  global miner_Hashes, crashed_Status, miner_Status, crashed_Problem                                                                                                                   
+  global miner_Hashes, crashed_Status, miner_Status, crashed_Problem, boot_Counter                                                                                                                   
 
   miner_Hashes = commands.getoutput("stats | grep 'miner_hash' ")
   miner_Status = commands.getoutput("stats | grep 'status' ")
@@ -52,6 +52,7 @@ def GetRigInfo():
 # ===================================   run  ================================                                                                  
                                                                                                                                                                                                       
 DumpActivity("Monitor Started!")
+boot_Counter = 0
 
 while 1:                                                                                                                                       
   # wait for 5 min                                                                                                                             
@@ -69,14 +70,18 @@ while 1:
   # check if any gpu is down
   GetRigInfo()
   
-  if (crashed_Status != -1) or (crashed_Problem != -1) :                                                                                                    
-      # reboot                                                                                                                                 
-      DumpActivity("One or more GPU(s) might have crashed")
+  if (boot_Counter == 1) :
+      # Checking
+      DumpActivity("One or more GPU(s) might have crashed!")
       DumpActivity(miner_Hashes)
-      DumpActivity("Rebooting...")
-      os.system("sudo reboot")                                                                                                            
+      os.system("sudo reboot")
+  elif (crashed_Status != -1) or (crashed_Problem != -1) :                                                                                                    
+      # Pending Counter                                                                                                                                
+      DumpActivity("Pending...")
+      boot_Counter = 1                                                                                                           
   else:                                                                                                                                        
-    # reset reboot pending counter                                                                                                             
+    # reset reboot pending counter
+    boot_Counter = 0
     print ("All GPU(s) is mining ! ")                                                                          
                                                                                                                            
 
