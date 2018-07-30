@@ -70,7 +70,7 @@ while 1:
   # check if any gpu is down
   GetRigInfo()
   
-  if (boot_Counter == 1) :
+  if (boot_Counter == 2) :
       # Checking
       DumpActivity("One or more GPU(s) might have crashed!")
       DumpActivity(miner_Hashes)
@@ -78,7 +78,7 @@ while 1:
   elif (crashed_Status != -1) or (crashed_Problem != -1) :                                                                                                    
       # Pending Counter                                                                                                                                
       DumpActivity("Pending...")
-      boot_Counter = 1                                                                                                           
+      boot_Counter += 1                                                                                                           
   else:                                                                                                                                        
     # reset reboot pending counter
     boot_Counter = 0
