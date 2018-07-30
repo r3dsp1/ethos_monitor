@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo update-miner claymore
+sudo update-miner ethminer
 
 cd
 
