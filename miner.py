@@ -70,18 +70,25 @@ while 1:
   # check if any gpu is down
   GetRigInfo()
   
-  if (boot_Counter == 2) :
+  # Set counter
+  if (crashed_Status != -1) or (crashed_Problem != -1) :
+    
+    if (boot_Counter == 1) :
       # Checking
       DumpActivity("One or more GPU(s) might have crashed!")
       DumpActivity(miner_Hashes)
-      os.system("sudo reboot")
-  elif (crashed_Status != -1) or (crashed_Problem != -1) :                                                                                                    
+      os.system("sudo reboot") 
+    else :
       # Pending Counter                                                                                                                                
       DumpActivity("Pending...")
-      boot_Counter += 1                                                                                                           
+      boot_Counter = 1
+      
   else:                                                                                                                                        
     # reset reboot pending counter
     boot_Counter = 0
-    print ("All GPU(s) is mining ! ")                                                                          
+    print ("All GPU(s) is mining ! ")    
+  
+                                                                                                          
+                                                                        
                                                                                                                            
 
